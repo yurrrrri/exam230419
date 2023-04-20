@@ -113,7 +113,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    @DisplayName("contains()")
+    @DisplayName("add(index)")
     void t010() {
         MyArrayList<String> list = new MyArrayList<>();
 
