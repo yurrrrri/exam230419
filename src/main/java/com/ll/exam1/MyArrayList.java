@@ -25,6 +25,22 @@ public class MyArrayList<T> {
         return true;
     }
 
+    public boolean add(int index, T element) {
+        makeNewDataIfFull();
+
+        makeEmptyIndex(index);
+
+        data[index] = element;
+        size++;
+        return true;
+    }
+
+    private void makeEmptyIndex(int index) {
+        for(int i = size - 1; i >= index; i--) {
+            data[i+1] = data[i];
+        }
+    }
+
     private void makeNewDataIfFull() {
         if(isFull()) {
             makeNewData();
@@ -34,7 +50,7 @@ public class MyArrayList<T> {
     private void makeNewData() {
         Object[] newData = new Object[data.length * 2];
 
-        for(int i=0; i<data.length; i++){
+        for(int i = 0; i < data.length; i++){
             newData[i] = data[i];
         }
 
@@ -50,7 +66,7 @@ public class MyArrayList<T> {
     }
 
     public int indexOf(T element) {
-        for(int i=0; i<size; i++) {
+        for(int i = 0; i < size; i++) {
             if(data[i].equals(element)) return i;
         }
         return -1;
@@ -61,7 +77,19 @@ public class MyArrayList<T> {
     }
 
     public T remove(int index) {
-        return (T)"return";
+        T oldData = (T) data[index];
+
+        for(int i = index + 1; i < size; i++) {
+            data[i] = data[i+1];
+        }
+
+        size--;
+        return oldData;
     }
 
+    public T set(int index, T element) {
+        T oldData = (T) data[index];
+        data[index] = element;
+        return oldData;
+    }
 }

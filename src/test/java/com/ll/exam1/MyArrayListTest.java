@@ -112,4 +112,52 @@ public class MyArrayListTest {
         assertThat(list.contains("apple 2")).isEqualTo(false);
     }
 
+    @Test
+    @DisplayName("contains()")
+    void t010() {
+        MyArrayList<String> list = new MyArrayList<>();
+
+        list.add("apple 1");
+        list.add("apple 2");
+        list.add("apple 3");
+        list.add(1, "apple 4");
+
+        assertThat(list.size()).isEqualTo(4);
+
+        assertThat(list.get(0)).isEqualTo("apple 1");
+        assertThat(list.get(1)).isEqualTo("apple 4");
+        assertThat(list.get(2)).isEqualTo("apple 2");
+        assertThat(list.get(3)).isEqualTo("apple 3");
+    }
+
+    @Test
+    @DisplayName("set()")
+    void t011() {
+        MyArrayList<String> list = new MyArrayList<>();
+
+        list.add("apple 1");
+        list.add("apple 2");
+        list.add("apple 3");
+
+        assertThat(list.set(0, "apple 4")).isEqualTo("apple 1");
+        assertThat(list.size()).isEqualTo(3);
+
+        assertThat(list.get(0)).isEqualTo("apple 4");
+        assertThat(list.get(1)).isEqualTo("apple 2");
+        assertThat(list.get(2)).isEqualTo("apple 3");
+    }
+
+    @Test
+    @DisplayName("remove()")
+    void t012() {
+        MyArrayList<String> list = new MyArrayList<>();
+
+        list.add("apple 1");
+        list.add("apple 2");
+        list.add("apple 3");
+
+        assertThat(list.remove(1)).isEqualTo("apple 2");
+        assertThat(list.size()).isEqualTo(2);
+    }
+
 }
