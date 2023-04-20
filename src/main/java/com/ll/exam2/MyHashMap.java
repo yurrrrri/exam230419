@@ -98,6 +98,7 @@ public class MyHashMap<K, V> {
             entries[i - 1] = entries[i];
         }
 
+        entries[size - 1] = null;
         size--;
         return oldValue;
     }

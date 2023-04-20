@@ -83,6 +83,7 @@ public class MyArrayList<T> {
             data[i] = data[i+1];
         }
 
+        data[size - 1] = null;
         size--;
         return oldData;
     }
