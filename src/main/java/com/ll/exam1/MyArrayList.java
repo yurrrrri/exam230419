@@ -2,14 +2,14 @@ package com.ll.exam1;
 
 public class MyArrayList<T> {
 
-    private T[] data = (T[]) new Object[10];
+    private String[] data = new String[2];
     private int size = 0;
 
     public int size() {
         return 0;
     }
 
-    public boolean add(T element) {
+    public boolean add(String element) {
         makeNewDataIfFull();
 
         data[size++] = element;
@@ -23,7 +23,7 @@ public class MyArrayList<T> {
     }
 
     private void makeNewData() {
-        T[] newData = (T[]) new Object[data.length * 2];
+        String[] newData = new String[data.length * 2];
 
         for(int i=0; i<data.length; i++){
             newData[i] = data[i];
@@ -36,7 +36,19 @@ public class MyArrayList<T> {
         return size >= data.length;
     }
 
-    public T get(int index) {
+    public String get(int index) {
         return data[index];
+    }
+
+    public String remove(int index) {
+        return "return";
+    }
+
+    public boolean contains(String element) {
+        return true;
+    }
+
+    public int indexOf(String element) {
+        return -1;
     }
 }
