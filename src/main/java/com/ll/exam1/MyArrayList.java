@@ -2,17 +2,26 @@ package com.ll.exam1;
 
 public class MyArrayList<T> {
 
-    private String[] data = new String[2];
+    private Object[] data;
     private int size = 0;
 
-    public int size() {
-        return 0;
+    public MyArrayList() {
+        this(2);
     }
 
-    public boolean add(String element) {
+    public MyArrayList(int dataLength) {
+        data = new Object[dataLength];
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public boolean add(T element) {
         makeNewDataIfFull();
 
-        data[size++] = element;
+        data[size] = element;
+        size++;
         return true;
     }
 
@@ -23,7 +32,7 @@ public class MyArrayList<T> {
     }
 
     private void makeNewData() {
-        String[] newData = new String[data.length * 2];
+        Object[] newData = new Object[data.length * 2];
 
         for(int i=0; i<data.length; i++){
             newData[i] = data[i];
@@ -36,19 +45,23 @@ public class MyArrayList<T> {
         return size >= data.length;
     }
 
-    public String get(int index) {
-        return data[index];
+    public T get(int index) {
+        return (T)data[index];
     }
 
-    public String remove(int index) {
-        return "return";
+    public int indexOf(T element) {
+        for(int i=0; i<size; i++) {
+            if(data[i].equals(element)) return i;
+        }
+        return -1;
     }
 
-    public boolean contains(String element) {
+    public T remove(int index) {
+        return (T)"return";
+    }
+
+    public boolean contains(T element) {
         return true;
     }
 
-    public int indexOf(String element) {
-        return -1;
-    }
 }

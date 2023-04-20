@@ -41,18 +41,62 @@ public class MyArrayListTest {
     }
 
     @Test
-    @DisplayName("get()")
+    @DisplayName("makeNewDataIfFull()")
     void t004() {
         MyArrayList<String> list = new MyArrayList<>();
 
-        int dataLength1 = ((String[]) TestUt.getFieldValue(list, "data", null)).length;
+        int dataLength1 = ((Object[]) TestUt.getFieldValue(list, "data", null)).length;
 
         IntStream.range(0, dataLength1 + 1)
                 .forEach(index -> list.add("apple %d".formatted(index)));
 
-        int dataLength2 = ((String[]) TestUt.getFieldValue(list, "data", null)).length;
+        int dataLength2 = ((Object[]) TestUt.getFieldValue(list, "data", null)).length;
 
         assertThat(dataLength2).isGreaterThan(dataLength1);
+    }
+
+    @Test
+    @DisplayName("MyArrayList 생성 시 배열 크기 직접 설정")
+    void t005() {
+        MyArrayList<Object> list = new MyArrayList<>(100);
+
+        int dataLength1 = ((Object[]) TestUt.getFieldValue(list, "data", null)).length;
+
+        assertThat(dataLength1).isEqualTo(100);
+    }
+
+    @Test
+    @DisplayName("indexOf()")
+    void t006() {
+        MyArrayList<String> list = new MyArrayList<>();
+        list.add("apple");
+        list.add("grape");
+        assertThat(list.indexOf("apple")).isEqualTo(0);
+        assertThat(list.indexOf("grape")).isEqualTo(1);
+        assertThat(list.indexOf("melon")).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("리스트에 String이 아닌 Boolean 담기")
+    void t007() {
+        MyArrayList<Boolean> list = new MyArrayList<>();
+        list.add(true);
+        list.add(false);
+        assertThat(list.size()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("boolean get()")
+    void t008() {
+        MyArrayList<Boolean> list = new MyArrayList<>();
+        list.add(true);
+        list.add(false);
+
+        boolean e0 = (boolean)list.get(0);
+        boolean e1 = (boolean)list.get(1);
+
+        assertThat(e0).isEqualTo(true);
+        assertThat(e1).isEqualTo(false);
     }
 
 }
