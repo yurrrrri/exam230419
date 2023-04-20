@@ -46,7 +46,7 @@ public class MyArrayList<T> {
     }
 
     public T get(int index) {
-        return (T)data[index];
+        return (T) data[index];
     }
 
     public int indexOf(T element) {
@@ -56,12 +56,12 @@ public class MyArrayList<T> {
         return -1;
     }
 
-    public T remove(int index) {
-        return (T)"return";
+    public boolean contains(T element) {
+        return indexOf(element) != -1;
     }
 
-    public boolean contains(T element) {
-        return true;
+    public T remove(int index) {
+        return (T)"return";
     }
 
 }

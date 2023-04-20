@@ -92,11 +92,24 @@ public class MyArrayListTest {
         list.add(true);
         list.add(false);
 
-        boolean e0 = (boolean)list.get(0);
-        boolean e1 = (boolean)list.get(1);
+        boolean e0 = list.get(0);
+        boolean e1 = list.get(1);
 
         assertThat(e0).isEqualTo(true);
         assertThat(e1).isEqualTo(false);
+    }
+
+    @Test
+    @DisplayName("contains()")
+    void t009() {
+        MyArrayList<String> list = new MyArrayList<>(2);
+
+        list.add("apple 0");
+        list.add("apple 1");
+
+        assertThat(list.contains("apple 0")).isEqualTo(true);
+        assertThat(list.contains("apple 1")).isEqualTo(true);
+        assertThat(list.contains("apple 2")).isEqualTo(false);
     }
 
 }
